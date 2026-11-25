@@ -1,30 +1,42 @@
 import Link from "next/link";
 import { ArrowDown, ArrowRight, MapPin, Utensils, Instagram, Clock3 } from "lucide-react";
 
-
+// Los logos salen de /public/images (mismos archivos que usa el selector de menús).
 const places = [
   {
     number: "01",
-    title: "Francesco",
-    subtitle: "Pizza Napoletana",
-    description: "El ritual de la pizza: masa de larga fermentación, horno intenso y sabores de inspiración napolitana.",
-    image: "https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1100&q=85",
-    tag: "Pizza & horno"
+    title: "Cocina japonesa",
+    subtitle: "Sushi Time",
+    description: "Rolls, nigiris y calientes preparados al momento, con el sello de la cocina japonesa de autor.",
+    logo: "/images/logo-sushi-time.svg",
+    slug: "sushi-time",
+    tag: "Cocina japonesa"
   },
   {
     number: "02",
-    title: "Francesco",
-    subtitle: "Casa de Pastas",
-    description: "Pastas para disfrutar sin apuro, recetas tradicionales y el placer de compartir alrededor de la mesa.",
-    image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1100&q=85",
-    tag: "Pastas artesanales"
+    title: "Cerveza tirada",
+    subtitle: "Cervecería",
+    description: "Cervezas tiradas, picadas y platos para compartir en la mesa grande.",
+    logo: "/images/logo-cerveceria.svg",
+    slug: "cerveceria",
+    tag: "Cerveza & picadas"
   },
   {
     number: "03",
+    title: "Cafetería · Crepería",
+    subtitle: "Rose & Co",
+    description: "Café de especialidad, crepes dulces y salados, y jugos naturales para cualquier momento del día.",
+    logo: "/images/logo-rose-co.svg",
+    slug: "rose-and-co",
+    tag: "Café & crepes"
+  },
+  {
+    number: "04",
     title: "Francesco",
     subtitle: "Street Food",
     description: "Una propuesta informal, sabrosa y urbana para hacer una pausa o seguir disfrutando el encuentro.",
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1100&q=85",
+    logo: "/images/logo-francesco-street.svg",
+    slug: "francesco-street-food",
     tag: "Street food"
   }
 ];
@@ -74,20 +86,21 @@ export default function Home() {
           <div className="place-grid">
             {places.map((place) => (
               <article className="place-card" key={place.number}>
-                <div className="place-image" style={{ backgroundImage: `url("${place.image}")` }}>
+                <div className="place-image logo-panel">
                   <span className="place-number">{place.number}</span>
+                  <img src={place.logo} alt={`Logo ${place.subtitle}`} />
                   <span className="place-tag">{place.tag}</span>
                 </div>
                 <div className="place-info">
                   <p>{place.title}</p>
                   <h3>{place.subtitle}</h3>
                   <p className="place-description">{place.description}</p>
-                  <a href="/menu" className="card-link">Explorar menú <ArrowRight size={16}/></a>
+                  <a href={`/menu/local/${place.slug}`} className="card-link">Explorar menú <ArrowRight size={16}/></a>
                 </div>
               </article>
             ))}
           </div>
-          <p className="illustrative">Las descripciones e imágenes son ilustrativas y se actualizarán con el material oficial de cada local.</p>
+          <p className="illustrative">Las descripciones son ilustrativas y se actualizarán con el material oficial de cada local.</p>
         </div>
       </section>
 
