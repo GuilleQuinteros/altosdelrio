@@ -120,7 +120,7 @@ export default function Home() {
           <a className="button button-dark" href="/menu">Elegir un local <ArrowRight size={17}/></a>
         </div>
         <div className="visit-card">
-          <div className="visit-icon"><MapPin size={21}/></div>
+          <img src="/images/logo-altos-del-rio.png" alt="Paseo Altos del Río" className="visit-logo" />
           <p className="visit-kicker">ENCONTRANOS</p>
           <h3>Altos del Río</h3>
           <p>Formosa Capital · Formosa, Argentina</p>
