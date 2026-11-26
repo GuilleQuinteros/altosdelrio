@@ -4,6 +4,7 @@ import type { MenuData } from "./types";
 // El contenido definitivo deberá validarse con cada establecimiento.
 const PH = "/images/product-placeholder.svg"; // reemplazar por fotos reales desde el panel
 const BG = "/images/complejo.webp"; // fondo provisional hasta tener uno por local
+export const FRANCESCO_MENU_URL = "https://menu-digital.microfront.prod.maxirest.com/?t=eyJjIjoiNTM1ODQiLCJtYSI6IjUzNTg0IiwibG8iOiIxIiwidiI6IjEifQ";
 
 export const seedData: MenuData = {
   brand: "ALTOS DEL RÍO",
@@ -79,7 +80,7 @@ export const seedData: MenuData = {
       ]
     },
     {
-      id: "r4", slug: "francesco-street-food", name: "Francesco · Street Food",
+      id: "r4", slug: "francesco-street-food", externalUrl: FRANCESCO_MENU_URL, name: "Francesco · Street Food",
       tagline: "Mucho sabor. Cero formalidades.",
       logo: "/images/logo-francesco-street.svg", background: "/images/fondo-francesco-street.jpg", accent: "#A66B45",
       description: "Una propuesta urbana para comer rico, compartir y seguir disfrutando.",

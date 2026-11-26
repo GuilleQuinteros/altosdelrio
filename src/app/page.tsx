@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowDown, ArrowRight, MapPin, Utensils, Instagram, Clock3 } from "lucide-react";
+import { FRANCESCO_MENU_URL } from "@/lib/seed";
 
 // Los logos salen de /public/images (mismos archivos que usa el selector de menús).
 const places = [
@@ -37,6 +38,7 @@ const places = [
     description: "Una propuesta informal, sabrosa y urbana para hacer una pausa o seguir disfrutando el encuentro.",
     logo: "/images/logo-francesco-street.svg",
     slug: "francesco-street-food",
+    externalUrl: FRANCESCO_MENU_URL,
     tag: "Street food"
   }
 ];
@@ -95,7 +97,7 @@ export default function Home() {
                   <p>{place.title}</p>
                   <h3>{place.subtitle}</h3>
                   <p className="place-description">{place.description}</p>
-                  <a href={`/menu/local/${place.slug}`} className="card-link">Explorar menú <ArrowRight size={16}/></a>
+                  <a href={place.externalUrl ?? `/menu/local/${place.slug}`} {...(place.externalUrl ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="card-link">Explorar menú <ArrowRight size={16}/></a>
                 </div>
               </article>
             ))}

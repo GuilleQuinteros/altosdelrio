@@ -12,16 +12,28 @@ export function RestaurantPicker() {
   const { data, ready } = useMenuData();
   const restaurants = data.restaurants.filter(r => r.active).slice(0, 5);
 
-  const card = (r: (typeof restaurants)[number], className: string) => (
-    <Link key={r.id} href={`/menu/local/${r.slug}`} className={`${CARD} ${className}`} aria-label={`Ver menú de ${r.name}`}>
+  const card = (r: (typeof restaurants)[number], className: string) => {
+  const cls = `${CARD} ${className}`;
+  const inner = (
+    <>
       <div className="flex h-16 w-full items-center justify-center md:h-20">
         <img src={r.logo} alt={`Logo ${r.name}`} className="max-h-full max-w-full object-contain" />
       </div>
       <span className="mt-4 flex items-center gap-1 text-[11px] uppercase tracking-[.2em] text-[#20231f]/55 group-hover:text-[#3c5219]">
         Ver menú <ArrowUpRight size={12} />
       </span>
+    </>
+  );
+  return r.externalUrl ? (
+    <a key={r.id} href={r.externalUrl} target="_blank" rel="noopener noreferrer" className={cls} aria-label={`Ver menú de ${r.name} (se abre en una pestaña nueva)`}>
+      {inner}
+    </a>
+  ) : (
+    <Link key={r.id} href={`/menu/local/${r.slug}`} className={cls} aria-label={`Ver menú de ${r.name}`}>
+      {inner}
     </Link>
   );
+};
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f2f0e9] text-[#20231f]">
