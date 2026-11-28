@@ -1,12 +1,30 @@
 import type { Metadata, Viewport } from "next";
+// @ts-ignore CSS is resolved by the Next.js bundler.
 import "./globals.css";
-import { PwaRegister } from "@/components/PwaRegister";
+
 export const metadata: Metadata = {
-  title: "Altos del Río | Experiencias gastronómicas",
-  description: "Descubrí Altos del Río, un espacio gastronómico en Formosa Capital, Formosa, Argentina.",
-  manifest: "/manifest.webmanifest"
+  title: "Paseo Altos del Río · Menús",
+  description: "Elegí un local y mirá su carta.",
 };
-export const viewport: Viewport = { themeColor: "#202521", width: "device-width", initialScale: 1 };
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="es"><body><PwaRegister />{children}</body></html>;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="es">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body suppressHydrationWarning className="min-h-dvh bg-bg font-sans text-ink antialiased">{children}</body>
+    </html>
+  );
 }
